@@ -54,6 +54,24 @@ Sito statico, nessun framework, nessun build: si modifica e si pubblica così co
 4. Una foto con persone come soggetto va in Reportage. Paesaggi senza animali né persone in primo piano vanno in Landscape.
 5. Prima di chiudere, controlla con uno script che nessun file in `img/` contenga GPS o altri metadati, che `w`/`h` corrispondano ai file reali e che l'ordine sia cronologico.
 
+## Foto nuove da Lightroom
+- Andrea carica in img/ file già esportati da Lightroom: 2000 px, senza GPS né metadati.
+- Il nome ha il formato AAAA-MM_DSCxxxxx.jpg: ricava taken dal nome.
+- A parità di mese, ordina per numero DSC: il numero più alto è il più recente.
+- La zona NON è nel nome: deducila guardando l'immagine (paesaggio, vegetazione, architettura,
+  costa, specie, tipo di luce) e tenendo conto delle altre foto dello stesso mese già nel sito.
+- Proponi solo zone generali (es. Salento, Salento coast, Abruzzo, Gargano), mai luoghi precisi.
+  Usa le stesse parole già presenti in photos.js quando possibile.
+- PRIMA di modificare photos.js chiedi conferma ad Andrea con una tabella:
+  file | cosa vedi | sezione | titolo proposto | zona proposta | quanto sei sicuro.
+  Se non hai indizi sufficienti scrivi "?" e chiedi.
+- Solo dopo la conferma rinomina i file (es. red-fox-hail-abruzzo.jpg), aggiorna photos.js
+  in ordine cronologico e apri la pull request.
+- Controlla comunque che non ci siano metadati residui.
+- Se un file supera i 700 KB o i 2000 px sul lato lungo, ridimensionalo a 2000 px e ricomprimilo
+  (JPEG progressive, qualità 75–80) finché non scende sotto i 700 KB, senza alterare colori o nitidezza.
+  Indica nella pull request quali file hai ricompresso e il peso prima/dopo.
+
 ## Cose da NON fare
 - Non aggiungere framework, build, dipendenze o tracker/analytics.
 - Non cambiare grafica, font o struttura delle pagine senza che Andrea lo chieda.
