@@ -73,7 +73,7 @@ Sito statico, nessun framework, nessun build: si modifica e si pubblica così co
   Indica nella pull request quali file hai ricompresso e il peso prima/dopo.
 
 ## Cose da NON fare
-- Non aggiungere framework, build, dipendenze o tracker/analytics.
+- Non aggiungere framework, build, dipendenze o tracker/analytics. Unica eccezione voluta da Andrea: lo script GoatCounter (senza cookie) in fondo a `index.html`. Il contatore NON va mai mostrato sul sito e le statistiche restano private.
 - Non cambiare grafica, font o struttura delle pagine senza che Andrea lo chieda.
 - Non aggiungere filigrane, protezione al tasto destro, musica, popup o pagine di benvenuto.
 - Non pubblicare date, orari, coordinate o località precise.
