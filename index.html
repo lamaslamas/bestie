@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BESTIE — Wildlife, landscape and reportage photography by Andrea Lamas</title>
+<meta name="description" content="Unauthorised portraits: wildlife, landscape and reportage photography by Andrea Lamas, from Salento, Italy, in colour and black & white.">
+<meta property="og:title" content="BESTIE — photography by Andrea Lamas">
+<meta property="og:description" content="Wild animals who never signed a model release. Wildlife, landscape and reportage from Salento and beyond.">
+<meta property="og:image" content="img/stonechat-salento.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='70' font-family='Arial' font-weight='900' text-anchor='middle' fill='%23fff'>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
+<style>
+:root{--ink:#000;--paper:#fff;--muted:#555;--soft:#F0F0EE;--hot:#FF3B1F}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--ink)}a:hover{color:var(--hot)}
+button{font:inherit;color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+.strip{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0;font-size:13px;border-bottom:1px solid var(--ink)}
+.strip nav{display:flex;gap:20px}.strip a{text-decoration:none;padding:8px 0}
+.mark{padding:28px 0 18px;text-align:center}
+.mark h1{margin:0;font-weight:900;font-size:clamp(84px,19vw,280px);line-height:.78;letter-spacing:-.055em;font-variation-settings:'wdth' 112}
+.mark a{text-decoration:none;color:var(--ink)}
+.secs{display:flex;justify-content:center;gap:clamp(18px,3vw,44px);flex-wrap:wrap;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink)}
+.subs{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;border-bottom:1px solid var(--ink)}
+.cat{background:none;border:0;cursor:pointer;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:14px 0;text-decoration:none}
+.cat:hover{color:var(--hot)}
+.cat[aria-current="page"]{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.sub{background:none;border:0;cursor:pointer;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:12px 0;color:#666}
+.sub:hover{color:var(--ink)}.sub[aria-pressed="true"]{color:var(--ink);font-weight:800}
+:focus-visible{outline:2px solid var(--hot);outline-offset:3px}
+main{padding:48px 0 96px;display:flex;flex-direction:column;gap:72px}
+.feat{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px;align-items:center}
+.feat .ph{display:flex;justify-content:center}
+.feat img{max-width:100%;max-height:78vh;width:auto;height:auto;display:block;cursor:zoom-in}
+.feat h2{margin:0;font-size:clamp(34px,4vw,58px);line-height:1;font-weight:800;letter-spacing:-.03em}
+.feat .txt{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--ink);border-radius:999px;padding:3px 9px;color:var(--ink)}
+.meta{margin:0;font-size:14px;color:var(--muted)}
+.more{background:none;border:0;border-bottom:3px solid var(--ink);cursor:pointer;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.04em;padding:6px 0}
+.more:hover{color:var(--hot);border-color:var(--hot)}
+.head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:28px}
+.head h2{margin:0;font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.head span{font-size:13px;color:var(--muted)}
+.grid{columns:3 300px;column-gap:28px}
+.card{display:flex;flex-direction:column;gap:14px;break-inside:avoid;margin:0 0 52px;width:100%;background:none;border:0;padding:0;text-align:left;cursor:zoom-in}
+.card .im{overflow:hidden;background:var(--soft);width:100%}
+.card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.card:hover img{transform:scale(1.03)}.card:hover .tt{color:var(--hot)}
+.tt{font-size:21px;line-height:1.15;font-weight:800;letter-spacing:-.015em}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.about{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px;padding:56px 0 96px}
+.about .portrait{aspect-ratio:4/5;background:var(--soft);display:flex;align-items:center;justify-content:center;color:#777;font-size:14px}
+.about h2{margin:0;font-size:clamp(34px,4vw,58px);line-height:1;font-weight:800;letter-spacing:-.03em}
+.about p{margin:0;max-width:32em}
+.links{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--ink);padding-top:18px}.links a{padding:8px 0}
+footer{border-top:3px solid var(--ink);padding:28px 0 48px;display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:14px}
+footer .cols{display:flex;gap:48px;flex-wrap:wrap}
+footer .cols div{display:flex;flex-direction:column;gap:2px}
+footer .cols a{padding:6px 0}
+footer h3{margin:0 0 6px;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+.lb{position:fixed;inset:0;z-index:50;background:var(--paper);display:none;flex-direction:column;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,3vw,40px) calc(20px + env(safe-area-inset-bottom,0px));gap:12px}
+.lb.open{display:flex}
+.lb .top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.lb .mid{flex:1 1 auto;min-height:0;display:flex;align-items:center;gap:12px}
+.lb .pic{flex:1 1 auto;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb .cap{display:flex;justify-content:center;align-items:baseline;gap:16px;flex-wrap:wrap}
+.nb{min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);cursor:pointer}
+.nb:hover{background:var(--ink);color:var(--paper)}
+.hide{display:none !important}
+@media (max-width:900px){.feat,.about{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.strip .l{display:none}.lb .nb.side{display:none}}
+@media (prefers-reduced-motion:reduce){.card img{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="strip">
+    <span class="l">Unauthorised portraits — a personal photo project by Andrea Lamas</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://www.instagram.com/lamaslamas/">Instagram</a>
+      <a href="https://lamaslamas.github.io/web/">Work ↗</a>
+      <a href="mailto:andreagreco808@gmail.com"><b>Contact</b></a>
+    </nav>
+  </div>
+  <header class="mark"><h1><a href="#wildlife">BESTIE</a></h1></header>
+  <nav class="secs" aria-label="Sections">
+    <a class="cat" href="#wildlife">Wildlife</a>
+    <a class="cat" href="#landscape">Landscape</a>
+    <a class="cat" href="#reportage">Reportage</a>
+    <a class="cat" href="#about">About</a>
+  </nav>
+  <div class="subs" id="subs" role="group" aria-label="Filter"></div>
+
+  <main id="gallery">
+    <section class="feat" id="feat" aria-label="Featured"></section>
+    <section id="list" aria-label="Photos">
+      <div class="head"><h2 id="listTitle"></h2><span id="count"></span></div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <section class="about hide" id="about" aria-label="About">
+    <div class="portrait">[Your portrait]</div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <h2>Hi, I’m Andrea.</h2>
+      <p>I photograph wild animals in Salento, in the south of Italy, and wherever else I can sit still long enough. Most of it is handheld, in manual, waiting for the light and the animal to agree. Some photos ask for colour, some for black and white.</p>
+      <p>By day I work in design and video — that’s on my other site.</p>
+      <div class="links">
+        <a href="mailto:andreagreco808@gmail.com"><b>andreagreco808@gmail.com</b></a>
+        <a href="https://www.instagram.com/lamaslamas/">Instagram @lamaslamas</a>
+        <a href="https://lamaslamas.github.io/web/">Design &amp; video work ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-weight:900;font-size:28px;letter-spacing:-.04em">BESTIE</span>
+      <span style="color:var(--muted)">Wildlife, landscape and reportage by Andrea Lamas, Salento, Italy.</span>
+    </div>
+    <div class="cols">
+      <div><h3>Contact</h3><a href="mailto:andreagreco808@gmail.com">andreagreco808@gmail.com</a></div>
+      <div><h3>Elsewhere</h3><a href="https://www.instagram.com/lamaslamas/">Instagram</a><a href="https://lamaslamas.github.io/web/">Work ↗</a></div>
+    </div>
+    <span style="width:100%;font-size:12px;color:var(--muted)">© <span id="yr"></span> Andrea Lamas. All photos are mine — please ask before using them.</span>
+  </footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo">
+  <div class="top">
+    <span style="font-weight:900;font-size:26px;letter-spacing:-.04em">BESTIE</span>
+    <span id="lbCount" style="font-size:13px;color:var(--muted)"></span>
+    <button class="nb" id="lbClose" aria-label="Close (Esc)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="mid">
+    <button class="nb side" id="lbPrev" aria-label="Previous photo (←)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="pic"><img id="lbImg" alt=""></div>
+    <button class="nb side" id="lbNext" aria-label="Next photo (→)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="cap"><span id="lbTitle" style="font-size:20px;font-weight:800;letter-spacing:-.015em"></span><span id="lbMeta" style="font-size:13px;color:var(--muted)"></span></div>
+</div>
+
+<script src="photos.js"></script>
+<script>
+(function(){
+  const SEC = {
+    wildlife: { label: 'Wildlife', blurb: 'Wild animals who never signed a model release, photographed in Salento and beyond, in colour and black & white.', subs: [['all','All'],['birds','Birds'],['mammals','Mammals'],['colour','Colour'],['bw','B&W']] },
+    landscape: { label: 'Landscape', blurb: 'Places that held still long enough. Coast, hills and weather, mostly in the south of Italy.', subs: [['all','All'],['colour','Colour'],['bw','B&W']] },
+    reportage: { label: 'Reportage', blurb: 'People, briefly. Feasts, harbours and doorsteps, photographed without asking anyone to pose.', subs: [['all','All'],['colour','Colour'],['bw','B&W']] }
+  };
+  const P = (window.PHOTOS || []).map(p => ({ ...p, src: 'img/' + p.file, tone: p.bw ? 'B&W' : 'Colour' }));
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let sec = 'wildlife', sub = 'all', list = [], cur = -1, lastFocus = null;
+  $('yr').textContent = new Date().getFullYear();
+
+  function route(){
+    const h = location.hash.replace('#','');
+    sec = (SEC[h] || h === 'about') ? h : 'wildlife';
+    sub = 'all'; render();
+  }
+  function render(){
+    document.querySelectorAll('.secs .cat').forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + sec ? 'page' : 'false'));
+    const isAbout = sec === 'about';
+    $('about').classList.toggle('hide', !isAbout);
+    $('gallery').classList.toggle('hide', isAbout);
+    $('subs').classList.toggle('hide', isAbout);
+    document.title = (isAbout ? 'About' : SEC[sec].label) + ' — BESTIE, photography by Andrea Lamas';
+    if (isAbout) return;
+    const S = SEC[sec];
+    $('subs').innerHTML = S.subs.map(([id,l]) => `<button class="sub" data-sub="${id}" aria-pressed="${id===sub}">${esc(l)}</button>`).join('');
+    list = P.filter(p => p.sec === sec && (sub === 'all' || sub === p.group || (sub === 'colour' && !p.bw) || (sub === 'bw' && p.bw)));
+    const showFeat = sub === 'all' && list.length > 0;
+    const feat = $('feat');
+    feat.classList.toggle('hide', !showFeat);
+    if (showFeat){
+      const f = list[0];
+      feat.innerHTML = `<div class="ph"><img src="${f.src}" width="${f.w}" height="${f.h}" alt="${esc(f.alt)}" data-i="0"></div>
+        <div class="txt"><span class="tag">Featured</span><h2>${esc(f.title)}</h2><p class="meta">${esc(f.place)} · ${f.tone}</p><p style="margin:0;max-width:30em">${esc(S.blurb)}</p><button class="more" data-i="0">View photo</button></div>`;
+    }
+    const rest = showFeat ? list.slice(1) : list;
+    $('list').classList.toggle('hide', rest.length === 0);
+    $('listTitle').textContent = sub === 'all' ? 'More ' + S.label.toLowerCase() : S.label + ' — ' + (S.subs.find(s => s[0] === sub) || ['', ''])[1];
+    $('count').textContent = list.length + (list.length === 1 ? ' photo' : ' photos');
+    const off = showFeat ? 1 : 0;
+    $('grid').innerHTML = rest.map((p, k) => `<button class="card" data-i="${k + off}" aria-label="Open ${esc(p.title)}">
+      <div class="im" style="aspect-ratio:${p.w}/${p.h}"><img src="${p.src}" width="${p.w}" height="${p.h}" loading="lazy" alt="${esc(p.alt)}"></div>
+      <span class="tt">${esc(p.title)}</span><span class="row"><span>${esc(p.place)}</span><span class="tag">${p.tone}</span></span></button>`).join('');
+  }
+  function open(i){
+    cur = (i + list.length) % list.length; const p = list[cur];
+    if (!$('lb').classList.contains('open')) lastFocus = document.activeElement;
+    $('lbImg').src = p.src; $('lbImg').alt = p.alt;
+    $('lbTitle').textContent = p.title; $('lbMeta').textContent = p.place + ' · ' + p.tone;
+    $('lbCount').textContent = String(cur + 1).padStart(2,'0') + ' / ' + String(list.length).padStart(2,'0');
+    $('lb').setAttribute('aria-label', p.title);
+    $('lb').classList.add('open'); document.body.style.overflow = 'hidden'; $('lbClose').focus();
+  }
+  function close(){ $('lb').classList.remove('open'); document.body.style.overflow = ''; cur = -1; if (lastFocus) lastFocus.focus(); }
+
+  document.addEventListener('click', e => {
+    const s = e.target.closest('[data-sub]'); if (s){ sub = s.dataset.sub; render(); return; }
+    const o = e.target.closest('[data-i]'); if (o && !o.closest('#lb')){ open(+o.dataset.i); }
+  });
+  $('lbClose').onclick = close; $('lbPrev').onclick = () => open(cur - 1); $('lbNext').onclick = () => open(cur + 1);
+  document.addEventListener('keydown', e => {
+    if (cur < 0) return;
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') open(cur + 1); else if (e.key === 'ArrowLeft') open(cur - 1);
+  });
+  let tx = null;
+  $('lb').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  $('lb').addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 50) open(cur + (dx < 0 ? 1 : -1)); });
+  window.addEventListener('hashchange', () => { if (cur >= 0) close(); route(); window.scrollTo(0, 0); });
+  route();
+})();
+</script>
+</body>
+</html>
