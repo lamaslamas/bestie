@@ -156,7 +156,8 @@ footer h3{margin:0 0 6px;font-weight:800;text-transform:uppercase;font-size:12px
     landscape: { label: 'Landscape', blurb: 'Places that held still long enough. Coast, hills and weather, mostly in the south of Italy.', subs: [['all','All'],['colour','Colour'],['bw','B&W']] },
     reportage: { label: 'Reportage', blurb: 'People, briefly. Feasts, harbours and doorsteps, photographed without asking anyone to pose.', subs: [['all','All'],['colour','Colour'],['bw','B&W']] }
   };
-  const P = (window.PHOTOS || []).map(p => ({ ...p, src: 'img/' + p.file, tone: p.bw ? 'B&W' : 'Colour' }));
+  const P = (window.PHOTOS || []).map(p => ({ ...p, src: 'img/' + p.file, tone: p.bw ? 'B&W' : 'Colour' }))
+    .sort((a, b) => (b.taken || '').localeCompare(a.taken || '')); // most recent first; stable, so ties keep photos.js order
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   let sec = 'wildlife', sub = 'all', list = [], cur = -1, lastFocus = null;
