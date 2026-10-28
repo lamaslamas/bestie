@@ -26,6 +26,7 @@ Sito statico, nessun framework, nessun build: si modifica e si pubblica così co
 - Ogni foto ha il campo `taken` con anno e mese dello scatto (es. '2024-05'). Il campo NON va mai mostrato sul sito: serve solo per ordinare. Niente giorno, niente ora.
 - La data va letta dai metadati EXIF (DateTimeOriginal) PRIMA di toglierli. Se manca, prova con la data nel nome del file (es. 20240508-DSC02196.jpg). Se non trovi nessuna data, chiedi ad Andrea.
 - `index.html` deve ordinare le foto per `taken` dalla più recente. Se non lo fa già, aggiungi l'ordinamento. Tieni comunque anche `photos.js` nello stesso ordine.
+- Il campo facoltativo `featured: true` tiene una foto in evidenza davanti alle altre della sezione (ora: "Fox after the hail" in Wildlife). Non toglierlo senza chiedere ad Andrea.
 - A parità di mese vale l'ordine in `photos.js`: metti prima la più recente, confrontando la data completa EXIF quando ce l'hai.
 - Alla prima sessione controlla le foto già presenti e riordinale. Se i loro file non hanno più i metadati, usa la data nel nome del file originale o chiedi ad Andrea.
 
