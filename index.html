@@ -68,6 +68,7 @@ footer .cols a{padding:6px 0}
 footer h3{margin:0 0 6px;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
 .lb{position:fixed;inset:0;z-index:50;background:var(--paper);display:none;flex-direction:column;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,3vw,40px) calc(20px + env(safe-area-inset-bottom,0px));gap:12px}
 .lb.open{display:flex}
+.lb{touch-action:none;overscroll-behavior:contain}
 .lb .top{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .lb .mid{flex:1 1 auto;min-height:0;display:flex;align-items:center;gap:12px}
 .lb .pic{flex:1 1 auto;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
@@ -197,14 +198,32 @@ footer h3{margin:0 0 6px;font-weight:800;text-transform:uppercase;font-size:12px
       <div class="im" style="aspect-ratio:${p.w}/${p.h}"><img src="${p.src}" width="${p.w}" height="${p.h}" loading="lazy" alt="${esc(p.alt)}"></div>
       <span class="tt">${esc(p.title)}</span><span class="row"><span>${esc(p.place)}</span><span class="tag">${p.tone}</span></span></button>`).join('');
   }
-  function open(i){
-    cur = (i + list.length) % list.length; const p = list[cur];
-    if (!$('lb').classList.contains('open')) lastFocus = document.activeElement;
-    $('lbImg').src = p.src; $('lbImg').alt = p.alt;
-    $('lbTitle').textContent = p.title; $('lbMeta').textContent = p.place + ' · ' + p.tone;
-    $('lbCount').textContent = String(cur + 1).padStart(2,'0') + ' / ' + String(list.length).padStart(2,'0');
-    $('lb').setAttribute('aria-label', p.title);
-    $('lb').classList.add('open'); document.body.style.overflow = 'hidden'; $('lbClose').focus();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let navId = 0;
+  function open(i, dir){
+    const lb = $('lb'), wasOpen = lb.classList.contains('open');
+    cur = (i + list.length) % list.length; const p = list[cur], id = ++navId;
+    if (!wasOpen) lastFocus = document.activeElement;
+    const apply = () => {
+      $('lbImg').src = p.src; $('lbImg').alt = p.alt;
+      $('lbTitle').textContent = p.title; $('lbMeta').textContent = p.place + ' · ' + p.tone;
+      $('lbCount').textContent = String(cur + 1).padStart(2,'0') + ' / ' + String(list.length).padStart(2,'0');
+      lb.setAttribute('aria-label', p.title);
+    };
+    if (!wasOpen){ apply(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; $('lbClose').focus(); }
+    else if (!dir || reduceMotion.matches || !lb.animate){ apply(); }
+    else {
+      // subtle slide + fade: old photo drifts away, new one settles in from the other side
+      const img = $('lbImg'), cap = lb.querySelector('.cap'), pre = new Image(); pre.src = p.src;
+      const out = img.animate([{ opacity: 0, transform: `translateY(${-dir * 16}px)` }], { duration: 150, easing: 'ease-in', fill: 'forwards' });
+      Promise.all([out.finished, pre.decode ? pre.decode().catch(() => {}) : 0]).then(() => {
+        if (id !== navId) return;
+        apply(); img.getAnimations().forEach(a => a.cancel());
+        img.animate([{ opacity: 0, transform: `translateY(${dir * 16}px) scale(.99)` }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        cap.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, easing: 'ease-out' });
+      });
+    }
+    [cur + 1, cur - 1].forEach(k => { const q = list[(k + list.length) % list.length]; if (q) new Image().src = q.src; });
   }
   function close(){ $('lb').classList.remove('open'); document.body.style.overflow = ''; cur = -1; if (lastFocus) lastFocus.focus(); }
 
@@ -212,14 +231,32 @@ footer h3{margin:0 0 6px;font-weight:800;text-transform:uppercase;font-size:12px
     const s = e.target.closest('[data-sub]'); if (s){ sub = s.dataset.sub; render(); return; }
     const o = e.target.closest('[data-i]'); if (o && !o.closest('#lb')){ open(+o.dataset.i); }
   });
-  $('lbClose').onclick = close; $('lbPrev').onclick = () => open(cur - 1); $('lbNext').onclick = () => open(cur + 1);
+  $('lbClose').onclick = close; $('lbPrev').onclick = () => open(cur - 1, -1); $('lbNext').onclick = () => open(cur + 1, 1);
   document.addEventListener('keydown', e => {
     if (cur < 0) return;
-    if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') open(cur + 1); else if (e.key === 'ArrowLeft') open(cur - 1);
+    if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') open(cur + 1, 1); else if (e.key === 'ArrowLeft') open(cur - 1, -1);
   });
-  let tx = null;
-  $('lb').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  $('lb').addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 50) open(cur + (dx < 0 ? 1 : -1)); });
+  // swipe (either axis) on touch screens
+  let tx = null, ty = null;
+  $('lb').addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  $('lb').addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = ty = null;
+    const d = Math.abs(dx) >= Math.abs(dy) ? dx : dy;
+    if (Math.abs(d) > 50) open(cur + (d < 0 ? 1 : -1), d < 0 ? 1 : -1);
+  });
+  // mouse wheel / trackpad: one photo per gesture (inertia scrolling counts once)
+  let wAcc = 0, wLast = 0, wFired = false, wNav = 0;
+  $('lb').addEventListener('wheel', e => {
+    e.preventDefault();
+    const now = performance.now();
+    if (now - wLast > 160){ wAcc = 0; wFired = false; }
+    wLast = now;
+    wAcc += Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    if (wFired || Math.abs(wAcc) < 30 || now - wNav < 450) return;
+    wFired = true; wNav = now;
+    open(cur + (wAcc > 0 ? 1 : -1), wAcc > 0 ? 1 : -1);
+  }, { passive: false });
   window.addEventListener('hashchange', () => { if (cur >= 0) close(); route(); window.scrollTo(0, 0); });
   route();
 })();
